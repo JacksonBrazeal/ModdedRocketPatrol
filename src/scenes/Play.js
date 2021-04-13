@@ -10,6 +10,7 @@ class Play extends Phaser.Scene {
         this.load.image('rocket', './assets/rocket.png');
         this.load.image('spaceship', './assets/spaceship.png');
         this.load.image('starfield', './assets/starfield.png');
+        this.load.audio("blammed", './assets/blammed.mp3');
         //load spritesheet
         this.load.spritesheet('explosion', './assets/explosion.png', {
             frameWidth: 64,
@@ -20,6 +21,9 @@ class Play extends Phaser.Scene {
     }
 
     create(){
+
+        this.sound.play('blammed');
+
         //place starfield
         this.starfield = this.add.tileSprite(0,0,game.config.width,game.config.height, 'starfield').setOrigin(0,0);
 
@@ -92,6 +96,9 @@ this.gameOver = false;
 
     update(){
         
+        if (this.gameOver){
+            this.sound.get('blammed').stop();
+        }
     // check key input for restart
     if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
         this.scene.restart();
@@ -155,4 +162,3 @@ if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
         this.sound.play('sfx_explosion');
     }
 }
-// the game is finished!
