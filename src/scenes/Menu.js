@@ -12,20 +12,6 @@ class Menu extends Phaser.Scene {
       }
 
     create(){
-            //menu text config
-            let menuConfig = {
-                fontFamily: 'Courier',
-                fontSize: '28px',
-                backgroundColor: '#F3B141',
-                color: '#843605',
-                aligh: 'right',
-                padding: {
-                    top: 5,
-                    bottom: 5,
-                },
-                fixedWidth: 0
-            }
-
             //load main menu png
             this.mainmenu = this.add.tileSprite(0,0,game.config.width,game.config.height, 'mainmenu').setOrigin(0,0);
 
@@ -38,8 +24,8 @@ class Menu extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
           // easy mode
           game.settings = {
-            spaceshipSpeed: 3,
-            gameTimer: 60000    
+            spaceshipSpeed: 2.75,
+            gameTimer: 75000    
           }
           this.sound.play('sfx_select');
           this.scene.start('playScene');    
@@ -47,8 +33,8 @@ class Menu extends Phaser.Scene {
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
           // hard mode
           game.settings = {
-            spaceshipSpeed: 4,
-            gameTimer: 45000    
+            spaceshipSpeed: 3.5,
+            gameTimer: 50000    
           }
           this.sound.play('sfx_select');
           this.scene.start('playScene');    

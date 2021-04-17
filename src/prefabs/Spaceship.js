@@ -6,7 +6,7 @@ class Spaceship extends Phaser.GameObjects.Sprite {
         this.points = pointValue; //store point value
         this.moveSpeed = game.settings.spaceshipSpeed; //pixels per frame
         this.moreTime = timeValue;
-        this.directionValue =  randomNumber;
+        this.directionValue =  randomNumber; //if it's one, it goes left, if its two, it goes Right (backwards)
     }
 
 
@@ -35,10 +35,10 @@ class Spaceship extends Phaser.GameObjects.Sprite {
     reset() {
         if(this.directionValue==1){
 
-        this.x = game.config.width;
+        this.x = game.config.width; //start at right said, else start at left.
         }
         else {
-            this.x = 0;
+            this.x = 0 - borderUISize * 2;
         }
     }
 }

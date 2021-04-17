@@ -11,15 +11,15 @@ class Shuttle extends Phaser.GameObjects.Sprite {
         this.moveSpeed = game.settings.spaceshipSpeed;
         // move shuttle down
         this.y += this.moveSpeed;
-        //wrap around from left to right edge
-        if(this.y > 480) {
+        //put back at green border
+        if(this.y > game.config.height) {
             this.reset();
         }
     }
 
     //position reset
     reset() {
-        this.x = Phaser.Math.Between((game.config.width/1.5) - borderUISize*2 - borderPadding, borderPadding + borderUISize*2);
+        this.x = Phaser.Math.Between((game.config.width/1.25) - borderUISize*2 - borderPadding, borderPadding + borderUISize*2);
         this.y = borderUISize*4;
     }
 
