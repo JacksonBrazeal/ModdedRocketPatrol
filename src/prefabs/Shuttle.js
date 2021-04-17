@@ -8,6 +8,7 @@ class Shuttle extends Phaser.GameObjects.Sprite {
     }
 
     update(){
+        this.moveSpeed = game.settings.spaceshipSpeed;
         // move shuttle down
         this.y += this.moveSpeed;
         //wrap around from left to right edge
@@ -18,7 +19,7 @@ class Shuttle extends Phaser.GameObjects.Sprite {
 
     //position reset
     reset() {
-        this.x = Phaser.Math.Between(game.config.width - borderUISize*2 - borderPadding, borderPadding + borderUISize*2);
+        this.x = Phaser.Math.Between((game.config.width/1.5) - borderUISize*2 - borderPadding, borderPadding + borderUISize*2);
         this.y = borderUISize*4;
     }
 
