@@ -19,7 +19,6 @@ class Shuttle extends Phaser.GameObjects.Sprite {
     reset() {
         this.x = Phaser.Math.Between(game.config.width - borderUISize*2 - borderPadding, borderPadding + borderUISize*2);
         this.y = borderUISize*4;
-        console.log("its just constantly resetting");
     }
 
 }

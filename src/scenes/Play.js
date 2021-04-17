@@ -30,6 +30,7 @@ class Play extends Phaser.Scene {
 
         //green rectangle UI background
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00FF00).setOrigin(0,0);
+
         //white borders
         this.add.rectangle(0,0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0,0);//top
         this.add.rectangle(0,game.config.height-borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0,0);//bottom
@@ -37,7 +38,7 @@ class Play extends Phaser.Scene {
         this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0,0); //right rectangle border
 
         //add rocket (Player 1)
-        this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
+        this.p1Rocket = new Rocket(this, game.config.width - borderUISize - borderPadding, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
 
         //add spaceships x3
         this.ship01 = new Spaceship(this, game.config.width + borderUISize *6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0,0);
@@ -94,6 +95,22 @@ this.gameOver = false;
     this.gameOver = true;
     }, null, this);
 
+    //display clock
+
+    let clockConfig = {
+        fontFamily: 'Courier',
+        fontSize: '28px',
+        backgroundColor: '#F3B141',
+         color: '#843605',
+         align: 'left',
+         padding: {
+         top: 5,
+        bottom: 5,
+     },
+    fixedWidth: 100
+    }
+
+    this.clockRight = this.add.text(game.config.width- borderUISize*5 - borderPadding, borderUISize + borderPadding*2, game.settings.gameTimer / 1000, clockConfig);
 }
 
     update(){
@@ -105,10 +122,14 @@ this.gameOver = false;
     if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
         this.scene.restart();
 }
-
+ //go to main menu
 if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
     this.scene.start("menuScene");
 }
+
+//update the clock
+var elapsed = game.settings.gameTimer - this.clock.getElapsed();
+this.clockRight.text = elapsed/1000;
 
         this.starfield.tilePositionX -= starSpeed;
 
