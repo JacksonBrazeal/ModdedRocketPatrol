@@ -1,6 +1,8 @@
 //PROJECT BREAKDOWN:
 //Jackson Brazeal
 //This is Rocket Patrol Reverse, A mod where the aliens get back at humans for destroying all their ships.
+//4/18/2021
+//I'd say close to 15 hours but I did some extra stuff that was unnecessary and more complicated, and also failed implementing a few other things and wasted time (Like High Score and Clock Time adding)
 
 
 //POINTS BREAKDOWN:
