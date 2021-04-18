@@ -215,7 +215,7 @@ this.clockRight.text = elapsed/1000;
             ship.alpha = 1;
             boom.destroy();
         })
-         // score add and repaint
+         // score add and scrapped time mechanic
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;  
         this.sound.play('sfx_explosion');
